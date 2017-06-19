@@ -156,7 +156,6 @@ trait HasGPIOModuleContents extends Module with HasRegMap {
   val iofEnFields =  if (c.includeIOF) (Seq(RegField.rwReg(c.width, iofEnReg.io))) else (Seq(RegField(c.width)))
   val iofSelFields = if (c.includeIOF) (Seq(RegField(c.width, iofSelReg))) else (Seq(RegField(c.width)))
 
-
   // Note that these are out of order.
   regmap(
     GPIOCtrlRegs.value     -> Seq(RegField.r(c.width, valueReg)),
@@ -176,7 +175,6 @@ trait HasGPIOModuleContents extends Module with HasRegMap {
     GPIOCtrlRegs.drive     -> Seq(RegField(c.width, dsReg)),
     GPIOCtrlRegs.input_en  -> Seq(RegField.rwReg(c.width, ieReg.io)),
     GPIOCtrlRegs.out_xor   -> Seq(RegField(c.width, xorReg))
-
   )
 
   //--------------------------------------------------
@@ -191,7 +189,6 @@ trait HasGPIOModuleContents extends Module with HasRegMap {
 
   val iofCtrl = Wire(Vec(c.width, new GPIOCtrl()))
   val iofPlusSwPinCtrl = Wire(Vec(c.width, new GPIOPinCtrl()))
-
 
   for (pin <- 0 until c.width) {
 
